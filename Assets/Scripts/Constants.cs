@@ -15,5 +15,8 @@ namespace ZigZag
         public const string PlayerTag = "Player";
         public const string CrystalTag = "Crystal";
         public const string FinishTag = "Finish";
+        public const int levelCompleteBonus = 1000;
+        public const int crystalCollectBonus = 10;
+        public const int comboBonus = 500;
     }
 }

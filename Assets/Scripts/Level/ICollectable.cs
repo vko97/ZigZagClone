@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ICollectable
+namespace ZigZag.Level
 {
-    void Collect();
+    public interface ICollectable
+    {
+        void Collect();
+    }
 }

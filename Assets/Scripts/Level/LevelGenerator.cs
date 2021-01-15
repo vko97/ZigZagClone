@@ -54,7 +54,6 @@ namespace ZigZag.Level
             var crystal = ObjectPooler.GetObjectFromPool("Crystal");
             crystal.gameObject.SetActive(true);
             crystal.transform.position = position;
-            Debug.Log(position);
         }
 
         public void AddPlatform()
