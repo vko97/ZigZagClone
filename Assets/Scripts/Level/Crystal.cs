@@ -7,22 +7,17 @@ using ZigZag.Pooling;
 
 namespace ZigZag.Level
 {
-    public class Crystal : MonoBehaviour, IDisappearable
+    public class Crystal : MonoBehaviour, IDisappearable, ICollectable
     {
         [SerializeField]
         private Animator animator;
-
-        private void OnDisable()
-        {
-            transform.localScale = Vector3.one;
-        }
 
         public void Collect()
         {
             animator.SetTrigger("Collect");
         }
 
-        void IDisappearable.Disappear()
+        public void Disappear()
         {
             animator.SetTrigger("Disappear");
         }

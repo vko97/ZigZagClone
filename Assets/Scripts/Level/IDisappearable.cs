@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IDisappearable
+namespace ZigZag.Level
 {
-    void Disappear();
+    public interface IDisappearable
+    {
+        void Disappear();
+    }
 }

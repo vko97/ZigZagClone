@@ -12,7 +12,7 @@ namespace ZigZag.Player
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent<Crystal>(out var crystal))
+            if (other.TryGetComponent<ICollectable>(out var crystal))
             {
                 onCrystalCollect?.Invoke();
                 crystal.Collect();
