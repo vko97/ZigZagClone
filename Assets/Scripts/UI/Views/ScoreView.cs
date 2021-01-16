@@ -13,7 +13,7 @@ namespace ZigZag.UI
         public void SetScore(int score)
         {
             scoreText.text = score.ToString();
-            Debug.Log(score);
+            //Debug.Log(score);
         }
     }
 }
