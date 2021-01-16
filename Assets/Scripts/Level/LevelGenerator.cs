@@ -62,7 +62,6 @@ namespace ZigZag.Level
             if (Random.Range(0f, 1f) < opositeDirectionSpawnChance)
             {
                 spawnRight = !spawnRight;
-                Debug.Log("change dir");
             }
             if (spawnRight)
             {
