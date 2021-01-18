@@ -9,7 +9,6 @@ namespace ZigZag.Player
         public delegate void OnFinishReachHandler();
         public event OnFinishReachHandler onFinishReach;
 
-        [SerializeField]
         private float movementSpeed = 1;
 
         private bool moveLeft = false;
@@ -30,6 +29,11 @@ namespace ZigZag.Player
             {
                 onFinishReach?.Invoke();
             }
+        }
+
+        public void SetMoveSpeed(float speed)
+        {
+            movementSpeed = speed;
         }
 
         public void ChangeDirection()

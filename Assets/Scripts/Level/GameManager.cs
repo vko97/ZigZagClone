@@ -5,17 +5,12 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using ZigZag.Player;
 using ZigZag.Events;
+using System.Linq;
 
 namespace ZigZag.Level
 {
     public class GameManager : MonoBehaviour
     {
-        [Header("Level set")]
-        [SerializeField][Range(1, 10)]
-        private int level;
-        [SerializeField]
-        private int levelMultiplier;
-        [Space]
         [SerializeField]
         private PlayerMovement playerMovement;
         [SerializeField]
@@ -26,21 +21,43 @@ namespace ZigZag.Level
         private TouchInput input;
         [SerializeField]
         private ScoreController scoreController;
+        [SerializeField]
+        private Material platformMaterial;
+        [SerializeField]
+        private PresetsRepository repository;
+        [SerializeField]
+        private LevelGenerator generator;
 
         private void Awake()
         {
-            deadZone.SetTarget(playerMovement.transform);
-            deadZone.onPlayerDead += OnPlayerDead;
-            input.onPointerDown += OnTappedScreen;
-            playerMovement.onFinishReach += scoreController.OnLevelComplete;
-            playerMovement.onFinishReach += OnFinishReach;
-            playerCollect.onCrystalCollect += scoreController.OnCrystalCollect;
+            var info = PlayerData.Instance().info;
+            var preset = repository.GetPresets().Where(item => item.id == info.levelId).FirstOrDefault();
+            platformMaterial.color = preset.platformColor;
+            var level = repository.GetPresets().IndexOf(preset) + 1;
+
+            var opositeDirSpawnChance = Utils.OpositeDirectionSpawnChance(info.levelMultiplier);
+            var crystalSpawnChance = Utils.CrystalSpawnChance(info.levelMultiplier);
+            var platformsNumber = Utils.PlatformNumber(preset.platformNumber, info.levelMultiplier);
+            var moveSpeed = Utils.MovementSpeed(info.levelMultiplier);
+
+            scoreController.Initialize(level, info.levelMultiplier);
             if (TryGetComponent<GameEventListener>(out var listener))
             {
                 listener.Response.AddListener(scoreController.OnPlatformPass);
             }
-            scoreController.SetLevelMultiplier(levelMultiplier);
-            scoreController.SetLevel(level);
+
+            generator.Initialize(platformsNumber, opositeDirSpawnChance, crystalSpawnChance);
+            playerMovement.SetMoveSpeed(moveSpeed);
+            Debug.Log(moveSpeed);
+
+            deadZone.SetTarget(playerMovement.transform);
+            deadZone.onPlayerDead += OnPlayerDead;
+
+            input.onPointerDown += OnTappedScreen;
+
+            playerMovement.onFinishReach += scoreController.OnLevelComplete;
+            playerMovement.onFinishReach += OnFinishReach;
+            playerCollect.onCrystalCollect += scoreController.OnCrystalCollect;
         }
 
         private void OnPlayerDead()

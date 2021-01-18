@@ -44,18 +44,14 @@ namespace ZigZag.Level
 
         public void OnLevelComplete()
         {
-            score += Constants.levelCompleteBonus * levelMultiplier * level / 2;
+            score += Constants.levelCompleteBonus * levelMultiplier * level;
             onScoreChange?.Invoke(score);
         }
 
-        public void SetLevelMultiplier(int mult)
-        {
-            levelMultiplier = mult;
-        }
-
-        public void SetLevel(int level)
+        public void Initialize(int level, int levelMultiplier)
         {
             this.level = level;
+            this.levelMultiplier = levelMultiplier;
         }
     }
 }

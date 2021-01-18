@@ -9,19 +9,16 @@ namespace ZigZag.Level
     public class LevelGenerator : MonoBehaviour
     {
         [SerializeField]
-        private int platformsOnScreenNumber = 20;
-        [SerializeField]
-        private int platformsOnLevel = 30;
-        [SerializeField]
-        [Range(0.1f, 0.7f)]
-        private float opositeDirectionSpawnChance = 0.5f;
-        [SerializeField]
-        [Range(0.01f, 0.3f)]
-        private float crystalSpawnChance = 0.2f;
+        private int platformsOnScreenNumber = 10;
+        
         [SerializeField]
         private Transform finish;
         [SerializeField]
         private GameEventListener platformFallListener;
+
+        private int platformsOnLevel = 30;
+        private float opositeDirectionSpawnChance = 0.5f;
+        private float crystalSpawnChance = 0.2f;
 
         private Vector3 platformToSpawnPos = Vector3.zero;
         private bool spawnRight = true;
@@ -75,6 +72,13 @@ namespace ZigZag.Level
                 pos.x += step;
                 platformToSpawnPos = pos;
             }
+        }
+
+        public void Initialize(int platformsOnLevel, float opositeDirectionSpawnChance, float crystalSpawnChance)
+        {
+            this.platformsOnLevel = platformsOnLevel;
+            this.opositeDirectionSpawnChance = opositeDirectionSpawnChance;
+            this.crystalSpawnChance = crystalSpawnChance;
         }
 
         public void AddPlatform()

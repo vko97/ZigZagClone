@@ -597,13 +597,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ee543c03c03b9c45bdc948551f0fc2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 1
-  levelMultiplier: 1
   playerMovement: {fileID: 1678640462}
   playerCollect: {fileID: 1744643371}
   deadZone: {fileID: 721799720}
   input: {fileID: 585841539}
   scoreController: {fileID: 323183243}
+  platformMaterial: {fileID: 2100000, guid: f80186b3a2a7de14a8f13c0077ce19ce, type: 2}
+  repository: {fileID: 11400000, guid: 94286486bae13d446830384b67870f60, type: 2}
+  generator: {fileID: 1727584065}
 --- !u!114 &892149895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -713,9 +714,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platformsOnScreenNumber: 20
-  platformsOnLevel: 60
-  opositeDirectionSpawnChance: 0.7
-  crystalSpawnChance: 0.3
   finish: {fileID: 517619044}
   platformFallListener: {fileID: 1727584067}
 --- !u!4 &1727584066
@@ -1030,6 +1028,21 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 112
       objectReference: {fileID: 0}
+    - target: {fileID: 1311381815785032243, guid: 988c986c30d1763409d4df2986fd4416,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1311381815785032243, guid: 988c986c30d1763409d4df2986fd4416,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1311381815785032243, guid: 988c986c30d1763409d4df2986fd4416,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 3675922849243046332, guid: 988c986c30d1763409d4df2986fd4416,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1230,6 +1243,12 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8846873789380988083, guid: 988c986c30d1763409d4df2986fd4416,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: c64c8cfacdf3ee7469cabaec649f71f5,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 988c986c30d1763409d4df2986fd4416, type: 3}
 --- !u!1001 &6289254077855513201
