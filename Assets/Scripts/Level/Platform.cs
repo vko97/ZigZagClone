@@ -6,25 +6,22 @@ using ZigZag.Player;
 
 namespace ZigZag.Level
 {
-    public class Platform : MonoBehaviour
+    public class Platform : MonoBehaviour, IDisappearable
     {
         [SerializeField]
         private GameEvent onPlatformFall;
 
         private Animator animator;
 
+        public void Disappear()
+        {
+            onPlatformFall.Raise();
+            animator.SetTrigger("Fall");
+        }
+
         private void Awake()
         {
             animator = gameObject.GetComponent<Animator>();
-        }
-
-        private void OnCollisionExit(Collision collision)
-        {
-            if (collision.gameObject.tag == Constants.PlayerTag)
-            {
-                onPlatformFall.Raise();
-                animator.SetTrigger("Fall");
-            }
         }
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using ZigZag.Player;
 using ZigZag.Events;
 using System.Linq;
+using TMPro;
 
 namespace ZigZag.Level
 {
@@ -15,6 +16,8 @@ namespace ZigZag.Level
         private PlayerMovement playerMovement;
         [SerializeField]
         private PlayerCollect playerCollect;
+        [SerializeField]
+        private List<TargetFollower> playerFollowers;
         [SerializeField]
         private DeadZone deadZone;
         [SerializeField]
@@ -27,13 +30,22 @@ namespace ZigZag.Level
         private PresetsRepository repository;
         [SerializeField]
         private LevelGenerator generator;
+        [SerializeField]
+        private DisappearTrigger disappearer;
+        [SerializeField]
+        private EndLevelController endLevelController;
+
+        private PlayerInfo info;
+        private Preset preset;
+        private int level;
+        
 
         private void Awake()
         {
-            var info = PlayerData.Instance().info;
-            var preset = repository.GetPresets().Where(item => item.id == info.levelId).FirstOrDefault();
+            info = PlayerData.Instance().info;
+            preset = repository.GetPresets().Where(item => item.id == info.levelId).FirstOrDefault();
             platformMaterial.color = preset.platformColor;
-            var level = repository.GetPresets().IndexOf(preset) + 1;
+            level = repository.GetPresets().IndexOf(preset) + 1;
 
             var opositeDirSpawnChance = Utils.OpositeDirectionSpawnChance(info.levelMultiplier);
             var crystalSpawnChance = Utils.CrystalSpawnChance(info.levelMultiplier);
@@ -44,32 +56,57 @@ namespace ZigZag.Level
             if (TryGetComponent<GameEventListener>(out var listener))
             {
                 listener.Response.AddListener(scoreController.OnPlatformPass);
+                listener.Response.AddListener(generator.AddPlatform);
             }
 
             generator.Initialize(platformsNumber, opositeDirSpawnChance, crystalSpawnChance);
             playerMovement.SetMoveSpeed(moveSpeed);
-            Debug.Log(moveSpeed);
 
-            deadZone.SetTarget(playerMovement.transform);
+            for (int i = 0; i < playerFollowers.Count; i++)
+            {
+                playerFollowers[i].SetTarget(playerMovement.transform);
+            }
+
+            deadZone.onPlayerDead += endLevelController.OnLevelFailed;
+            deadZone.onPlayerDead += scoreController.CountScore;
             deadZone.onPlayerDead += OnPlayerDead;
 
             input.onPointerDown += OnTappedScreen;
 
+            playerMovement.onFinishReach += endLevelController.OnLevelComplete;
             playerMovement.onFinishReach += scoreController.OnLevelComplete;
+            playerMovement.onFinishReach += scoreController.CountScore;
             playerMovement.onFinishReach += OnFinishReach;
             playerCollect.onCrystalCollect += scoreController.OnCrystalCollect;
+
+            
+        }
+
+        private void SetNextLevel()
+        {
+            var presets = repository.GetPresets();
+            if (level == presets.Count)
+            {
+                PlayerData.Instance().info.levelMultiplier += 1;
+                PlayerData.Instance().info.levelId = presets[0].id;
+            }
+            else
+            {
+                PlayerData.Instance().info.levelId = presets[level].id;
+            }
         }
 
         private void OnPlayerDead()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            //TODO show player dead UI
+            playerMovement.SetMoveSpeed(0);
+            playerMovement.transform.position = Constants.startPos;
         }
 
         private void OnFinishReach()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            //TODO show score UI
+            playerMovement.SetMoveSpeed(0);
+            disappearer.transform.localScale = new Vector3(.3f, 1f, .3f);
+            SetNextLevel();
         }
 
         public void OnTappedScreen()

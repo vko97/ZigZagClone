@@ -13,8 +13,8 @@ namespace ZigZag.Level
         
         [SerializeField]
         private Transform finish;
-        [SerializeField]
-        private GameEventListener platformFallListener;
+        //[SerializeField]
+        //private GameEventListener platformFallListener;
 
         private int platformsOnLevel = 30;
         private float opositeDirectionSpawnChance = 0.5f;
@@ -23,7 +23,8 @@ namespace ZigZag.Level
         private Vector3 platformToSpawnPos = Vector3.zero;
         private bool spawnRight = true;
         private float step;
-        private int platformCounter;
+        private int platformCounter = 0;
+        private bool finishAdded = false;
 
         //TODO clamp platforms on screen and on level
         private void Awake()
@@ -42,9 +43,10 @@ namespace ZigZag.Level
 
         private void AddFinish()
         {
+            Debug.Log(platformCounter + " platforms added");
             finish.gameObject.SetActive(true);
             finish.position = platformToSpawnPos;
-            platformFallListener.Response.RemoveAllListeners();
+            finishAdded = true;
         }
 
         private void SpawnCrystal(Vector3 position)
@@ -85,6 +87,10 @@ namespace ZigZag.Level
         {
             if (platformCounter == platformsOnLevel)
             {
+                if (finishAdded)
+                {
+                    return;
+                }
                 AddFinish();
                 return;
             }

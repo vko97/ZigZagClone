@@ -22,5 +22,7 @@ namespace ZigZag
         public const float basicOpositeDirSpawnChance = 0.3f;
         public const float basicCrystalSpawnChance = 0.1f;
         public const float basicMoveSpeed = 10f;
+
+        public static readonly Vector3 startPos = new Vector3(-17f, .5f, -14f);
     }
 }

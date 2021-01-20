@@ -32,6 +32,6 @@ public class PlayerData
 
     public void OnFirstAppRun()
     {
-        info = new PlayerInfo("id6", 5, false, 0);
+        info = new PlayerInfo("id1", 1, false, 0);
     }
 }

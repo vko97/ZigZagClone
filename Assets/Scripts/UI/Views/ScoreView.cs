@@ -9,11 +9,17 @@ namespace ZigZag.UI
     {
         [SerializeField]
         private TMP_Text scoreText;
+        [SerializeField]
+        public Animator animator;
 
         public void SetScore(int score)
         {
             scoreText.text = score.ToString();
-            //Debug.Log(score);
+        }
+
+        public void PlayScoreCountAnim()
+        {
+            animator.SetTrigger("Count");
         }
     }
 }
