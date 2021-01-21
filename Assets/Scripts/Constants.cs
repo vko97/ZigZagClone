@@ -24,5 +24,9 @@ namespace ZigZag
         public const float basicMoveSpeed = 10f;
 
         public static readonly Vector3 startPos = new Vector3(-17f, .5f, -14f);
+
+        public const string loginScene = "LoginScene";
+        public const string mainMenuScene = "MainMenuScene";
+        public const string levelScene = "LevelScene";
     }
 }

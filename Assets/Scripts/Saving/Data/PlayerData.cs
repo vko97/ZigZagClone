@@ -18,20 +18,34 @@ public class PlayerData
     }
     #endregion
 
-    public PlayerData()
-    {
-        OnFirstAppRun();
-    }
+    public delegate void OnLoadedHandler();
+    public event OnLoadedHandler onLoadedData;
 
     public PlayerInfo info { get; private set; }
 
-    public PlayerInfo GetInfo()
-    {
-        return info;
-    }
+    //public PlayerInfo GetInfo()
+    //{
+    //    return info;
+    //}
 
     public void OnFirstAppRun()
     {
         info = new PlayerInfo("id1", 1, false, 0);
+    }
+
+    public async void LoadData()
+    {
+        info =  await FirebaseController.Instance().Load();
+        if (info == null)
+        {
+            OnFirstAppRun();
+            SaveData();
+        }
+        onLoadedData?.Invoke();
+    }
+
+    public void SaveData()
+    {
+        FirebaseController.Instance().Save(info);
     }
 }

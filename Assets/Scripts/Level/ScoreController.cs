@@ -74,6 +74,7 @@ namespace ZigZag.Level
         {
             StartCoroutine(AnimatedCountScore());
             scoreView.PlayScoreCountAnim();
+            CheckAndSetBestScore();
         }
 
         public void OnPlatformPass()
@@ -104,7 +105,6 @@ namespace ZigZag.Level
             CalcScore();
             onScoreChange?.Invoke(score);
             Debug.Log("LEVEL COMPLETE SCORE MANAGER");
-            CheckAndSetBestScore();
         }
 
         public void Initialize(int level, int levelMultiplier)

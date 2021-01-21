@@ -100,6 +100,7 @@ namespace ZigZag.Level
         {
             playerMovement.SetMoveSpeed(0);
             playerMovement.transform.position = Constants.startPos;
+            PlayerData.Instance().SaveData();
         }
 
         private void OnFinishReach()
@@ -107,6 +108,7 @@ namespace ZigZag.Level
             playerMovement.SetMoveSpeed(0);
             disappearer.transform.localScale = new Vector3(.3f, 1f, .3f);
             SetNextLevel();
+            PlayerData.Instance().SaveData();
         }
 
         public void OnTappedScreen()

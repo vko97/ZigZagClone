@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "308050838854",
+    "firebase_url": "https://zigzagclone-5dd87-default-rtdb.firebaseio.com",
+    "project_id": "zigzagclone-5dd87",
+    "storage_bucket": "zigzagclone-5dd87.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:308050838854:android:9146df36f853dc7286d147",
+        "android_client_info": {
+          "package_name": "com.Fgfactory.ZigZagClone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "308050838854-qhpaep233l3thjuublulh91ed2eig563.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8Ei5MmYeXFlsjCB016U-mjINcRqBTfJ4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "308050838854-qhpaep233l3thjuublulh91ed2eig563.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "308050838854-t67kk896fqq1qjd15bp63akdm1lsmd2v.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.Fgfactory.ZigZagClone"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

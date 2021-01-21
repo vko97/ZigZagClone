@@ -9,6 +9,7 @@ public class PlayerInfo
     public int levelMultiplier;
     public bool adsRemoved = false;
     public int bestScore = 0;
+    public string name = "PlayerUnknown";
 
     public PlayerInfo(string levelId, int levelMultiplier, bool adsRemoved, int bestScore)
     {
