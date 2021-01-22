@@ -26,6 +26,8 @@ public class MainMenuController : MonoBehaviour
     [Space]
     [SerializeField]
     private OptionsController options;
+    [SerializeField]
+    private LeaderboardController leaderboard;
 
 
 
@@ -37,15 +39,8 @@ public class MainMenuController : MonoBehaviour
         topView.Initialize(currLevel * info.levelMultiplier, info.bestScore);
 
         playButton.onClick.AddListener(() => SceneManager.LoadScene(Constants.levelScene));
-
+        leadesButton.onClick.AddListener(() => leaderboard.gameObject.SetActive(true));
         optionsButton.onClick.AddListener(() => options.gameObject.SetActive(true));
         exitButton.onClick.AddListener(() => Application.Quit());
-
-        Leaders();
-    }
-
-    private async void Leaders()
-    {
-        var leaders =  await FirebaseController.Instance().LoadLeaders();
     }
 }

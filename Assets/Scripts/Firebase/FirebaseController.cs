@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using UnityEngine.SceneManagement;
 using System;
 using Newtonsoft.Json;
+using System.Linq;
 
 public class FirebaseController
 {
@@ -50,6 +51,7 @@ public class FirebaseController
                 Debug.LogError(System.String.Format(
                   "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
             }
+            //FirebaseAuth.DefaultInstance.SignOut();
             Login();
         });
         
@@ -140,7 +142,7 @@ public class FirebaseController
         return info;
     }
 
-    public async Task<List<PlayerInfo>> LoadLeaders()
+    public async Task<List<PlayerInfo>> LoadLeaders(int leadersAmount)
     {
         List<PlayerInfo> leaders = new List<PlayerInfo>();
         try
@@ -148,10 +150,14 @@ public class FirebaseController
             var snapshot = await FirebaseDatabase.DefaultInstance
                 .GetReference("Users")
                 .OrderByChild("bestScore")
+                .LimitToLast(leadersAmount)
                 .GetValueAsync();
             if (snapshot.Exists)
             {
-                leaders = JsonConvert.DeserializeObject<List<PlayerInfo>>(snapshot.GetRawJsonValue());
+                foreach (var child in snapshot.Children.Reverse())
+                {
+                    leaders.Add(JsonConvert.DeserializeObject<PlayerInfo>(child.GetRawJsonValue()));
+                }
             }
             else
             {
@@ -168,4 +174,10 @@ public class FirebaseController
         }
         return leaders;
     }
+}
+
+[System.Serializable]
+public class LeaderInfo
+{
+    
 }

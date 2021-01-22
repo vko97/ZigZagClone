@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Models/Presets repository")]
@@ -11,6 +12,12 @@ public class PresetsRepository : ScriptableObject
     public List<Preset> GetPresets()
     {
         return presets;
+    }
+
+    public int GetPresetNumber(string id)
+    {
+        var preset = presets.Where(item => item.id == id).FirstOrDefault();
+        return presets.IndexOf(preset);
     }
 }
 
