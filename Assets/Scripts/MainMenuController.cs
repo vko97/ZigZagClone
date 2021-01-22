@@ -28,6 +28,8 @@ public class MainMenuController : MonoBehaviour
     private OptionsController options;
     [SerializeField]
     private LeaderboardController leaderboard;
+    [SerializeField]
+    private IAPManager purchaser;
 
 
 
@@ -37,10 +39,22 @@ public class MainMenuController : MonoBehaviour
         var preset = presetsRep.GetPresets().Where(item => item.id == info.levelId).FirstOrDefault();
         int currLevel = presetsRep.GetPresets().IndexOf(preset) + 1;
         topView.Initialize(currLevel * info.levelMultiplier, info.bestScore);
+        Initialize();
 
         playButton.onClick.AddListener(() => SceneManager.LoadScene(Constants.levelScene));
+        removeAdsButton.onClick.AddListener(() => purchaser.BuyProductById(IAPManager.removeAds));
         leadesButton.onClick.AddListener(() => leaderboard.gameObject.SetActive(true));
         optionsButton.onClick.AddListener(() => options.gameObject.SetActive(true));
         exitButton.onClick.AddListener(() => Application.Quit());
+
+        PlayerData.Instance().onAdsRemove += Initialize;
+    }
+
+    private void Initialize()
+    {
+        if (PlayerData.Instance().info.adsRemoved)
+        {
+            removeAdsButton.gameObject.SetActive(false);
+        }
     }
 }

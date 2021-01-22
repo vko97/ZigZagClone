@@ -21,6 +21,9 @@ public class PlayerData
     public delegate void OnLoadedHandler();
     public event OnLoadedHandler onLoadedData;
 
+    public delegate void OnAdsRemovedHandler();
+    public event OnAdsRemovedHandler onAdsRemove;
+
     public PlayerInfo info { get; private set; }
 
     //public PlayerInfo GetInfo()
@@ -47,5 +50,12 @@ public class PlayerData
     public void SaveData()
     {
         FirebaseController.Instance().Save(info);
+    }
+
+    public void RemoveAds()
+    {
+        info.adsRemoved = true;
+        onAdsRemove?.Invoke();
+        SaveData();
     }
 }
