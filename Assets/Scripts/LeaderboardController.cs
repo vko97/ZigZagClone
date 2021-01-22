@@ -17,6 +17,8 @@ public class LeaderboardController : MonoBehaviour
     [SerializeField]
     private Button backButton;
 
+    private List<LeaderView> leaderViews = new List<LeaderView>();
+
     private void Awake()
     {
         backButton.onClick.AddListener(() => gameObject.SetActive(false));
@@ -29,11 +31,11 @@ public class LeaderboardController : MonoBehaviour
 
     private void OnDisable()
     {
-        var leaders = parent.GetComponentsInChildren<LeaderView>();
-        foreach(var leader in leaders)
+        for(int i = 0; i < leaderViews.Count; i++)
         {
-            Destroy(leader);
+            Destroy(leaderViews[i].gameObject);
         }
+        leaderViews.Clear();
     }
 
     private async void Initialize()
@@ -43,7 +45,8 @@ public class LeaderboardController : MonoBehaviour
         for (int i = 0; i < leadersAmount; i++)
         {
             var leader = leaders[i];
-            var level = (presetsRep.GetPresetNumber(leader.levelId) + 1) * leader.levelMultiplier;
+            var presetNumber = presetsRep.GetPresetNumber(leader.levelId);
+            var level = Utils.CalcLevel(presetNumber, leader.levelMultiplier);
             var leaderView = Instantiate(leaderViewPrefab, parent,false);
           
             
@@ -54,6 +57,7 @@ public class LeaderboardController : MonoBehaviour
             leaderView.transform.localPosition = position;
 
             leaderView.Initialize(i + 1, leader.name, level, leader.bestScore);
+            leaderViews.Add(leaderView);
         }
     }
 

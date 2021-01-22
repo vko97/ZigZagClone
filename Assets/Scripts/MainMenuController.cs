@@ -37,8 +37,9 @@ public class MainMenuController : MonoBehaviour
     {
         var info = PlayerData.Instance().info;
         var preset = presetsRep.GetPresets().Where(item => item.id == info.levelId).FirstOrDefault();
-        int currLevel = presetsRep.GetPresets().IndexOf(preset) + 1;
-        topView.Initialize(currLevel * info.levelMultiplier, info.bestScore);
+        int presetNumber = presetsRep.GetPresetNumber(info.levelId);
+        int level = Utils.CalcLevel(presetNumber, info.levelMultiplier);
+        topView.Initialize(level, info.bestScore);
         Initialize();
 
         playButton.onClick.AddListener(() => SceneManager.LoadScene(Constants.levelScene));

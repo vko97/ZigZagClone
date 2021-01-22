@@ -26,4 +26,9 @@ public static class Utils
     {
         return Constants.basicMoveSpeed * (1 + ((multiplier - 1) * 0.1f));
     }
+
+    public static int CalcLevel(int presetNumber, int multiplier)
+    {
+        return presetNumber + 1 + 10 * (multiplier - 1);
+    }
 }

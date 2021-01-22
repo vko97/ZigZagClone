@@ -175,9 +175,3 @@ public class FirebaseController
         return leaders;
     }
 }
-
-[System.Serializable]
-public class LeaderInfo
-{
-    
-}
