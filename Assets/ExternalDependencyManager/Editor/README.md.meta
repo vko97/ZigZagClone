@@ -1,9 +1,7 @@
 fileFormatVersion: 2
-guid: 11eb52f780284fd69194951ac46cb538
+guid: 0479ca3924e244b5e9f16ae344e70309
 labels:
 - gvh
-- gvh_version-7.0.2
-- gvhp_exportpath-ExternalDependencyManager/Editor/README.md
 TextScriptImporter:
   externalObjects: {}
   userData: 

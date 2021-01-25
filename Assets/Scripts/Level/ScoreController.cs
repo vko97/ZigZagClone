@@ -18,6 +18,8 @@ namespace ZigZag.Level
         private AnimationClip scaleAnimation;
         [SerializeField]
         private TMP_Text newBestText;
+        [SerializeField]
+        private RewardedVideoManager rewardedVideo;
 
         private int score = 0;
         private int basicScore = 0;
@@ -29,6 +31,15 @@ namespace ZigZag.Level
         private void Awake()
         {
             onScoreChange += scoreView.SetScore;
+            rewardedVideo.onVideoReward += OnRewardedVideo;
+        }
+
+        private void OnRewardedVideo()
+        {
+            score += 1000;
+            onScoreChange?.Invoke(score);
+            CheckAndSetBestScore();
+            PlayerData.Instance().SaveData();
         }
 
         private IEnumerator AnimatedCountScore()

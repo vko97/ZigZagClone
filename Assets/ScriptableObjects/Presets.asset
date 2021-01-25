@@ -14,25 +14,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   presets:
   - id: id1
-    platformColor: {r: 1, g: 0.039559267, b: 0, a: 0}
+    platformColor: {r: 1, g: 0.47197425, b: 0, a: 0}
     platformNumber: 20
   - id: id2
-    platformColor: {r: 1, g: 0, b: 0.75342274, a: 0}
+    platformColor: {r: 1, g: 0, b: 0.40315866, a: 0}
     platformNumber: 25
   - id: id3
-    platformColor: {r: 0.39460817, g: 0.030838395, b: 0.9339623, a: 0}
+    platformColor: {r: 0.4407092, g: 0.031372547, b: 0.93333334, a: 0}
     platformNumber: 30
   - id: id4
-    platformColor: {r: 0, g: 0.3425088, b: 1, a: 0}
+    platformColor: {r: 0, g: 0.42510676, b: 1, a: 0}
     platformNumber: 35
   - id: id5
-    platformColor: {r: 0, g: 0.78241277, b: 1, a: 0}
+    platformColor: {r: 0, g: 1, b: 0.9578204, a: 0}
     platformNumber: 40
   - id: id6
-    platformColor: {r: 0, g: 1, b: 0.7193136, a: 0}
+    platformColor: {r: 0, g: 1, b: 0.6482525, a: 0}
     platformNumber: 45
   - id: id7
-    platformColor: {r: 0, g: 1, b: 0.092865944, a: 0}
+    platformColor: {r: 0.5326903, g: 1, b: 0, a: 0}
     platformNumber: 50
   - id: id8
     platformColor: {r: 0.80569124, g: 1, b: 0, a: 0}
@@ -41,5 +41,5 @@ MonoBehaviour:
     platformColor: {r: 1, g: 0.7978908, b: 0, a: 0}
     platformNumber: 60
   - id: id10
-    platformColor: {r: 0.13207549, g: 0.115956, b: 0.10653259, a: 0}
+    platformColor: {r: 0.3773585, g: 0.2603875, b: 0.17265932, a: 0}
     platformNumber: 70
