@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,6 +8,7 @@ public class AuthManager : MonoBehaviour
 {
     private void Awake()
     {
+        Application.targetFrameRate = 60;
         FirebaseController.Instance().onLogin += OnLogin;
         PlayerData.Instance().onLoadedData += LoadMainMenu;
     }
@@ -20,4 +22,6 @@ public class AuthManager : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenuScene");
     }
+
+    
 }
