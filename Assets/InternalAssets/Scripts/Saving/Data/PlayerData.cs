@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using ZigZag.Firebase;
 
 [System.Serializable]
 public class PlayerData
@@ -25,11 +26,6 @@ public class PlayerData
     public event OnAdsRemovedHandler onAdsRemove;
 
     public PlayerInfo info { get; private set; }
-
-    //public PlayerInfo GetInfo()
-    //{
-    //    return info;
-    //}
 
     public void OnFirstAppRun()
     {

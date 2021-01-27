@@ -13,8 +13,6 @@ namespace ZigZag.Level
         
         [SerializeField]
         private Transform finish;
-        //[SerializeField]
-        //private GameEventListener platformFallListener;
 
         private int platformsOnLevel = 30;
         private float opositeDirectionSpawnChance = 0.5f;
@@ -26,7 +24,6 @@ namespace ZigZag.Level
         private int platformCounter = 0;
         private bool finishAdded = false;
 
-        //TODO clamp platforms on screen and on level
         private void Awake()
         {
             

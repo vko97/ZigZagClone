@@ -13,15 +13,15 @@ namespace ZigZag.Level
 
         private Animator animator;
 
+        private void Awake()
+        {
+            animator = gameObject.GetComponent<Animator>();
+        }
+
         public void Disappear()
         {
             onPlatformFall.Raise();
             animator.SetTrigger("Fall");
-        }
-
-        private void Awake()
-        {
-            animator = gameObject.GetComponent<Animator>();
         }
     }
 }

@@ -4,39 +4,42 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class OptionsController : MonoBehaviour
+namespace ZigZag.UI
 {
-    [SerializeField]
-    private TMP_InputField input;
-    [SerializeField]
-    private TMP_Text placeholder;
-    [SerializeField]
-    private Button setNameButton;
-    [SerializeField]
-    private Button backButton;
-
-    private void Awake()
+    public class OptionsController : MonoBehaviour
     {
-        setNameButton.onClick.AddListener(() => OnSetName());
-        backButton.onClick.AddListener(() => gameObject.SetActive(false));
-    }
+        [SerializeField]
+        private TMP_InputField input;
+        [SerializeField]
+        private TMP_Text placeholder;
+        [SerializeField]
+        private Button setNameButton;
+        [SerializeField]
+        private Button backButton;
 
-    private void OnEnable()
-    {
-        Initialize();
-    }
+        private void Awake()
+        {
+            setNameButton.onClick.AddListener(() => OnSetName());
+            backButton.onClick.AddListener(() => gameObject.SetActive(false));
+        }
 
-    private void Initialize()
-    {
-        var info = PlayerData.Instance().info;
-        placeholder.text = info.name;
-        input.text = null;
-    }
+        private void OnEnable()
+        {
+            Initialize();
+        }
 
-    private void OnSetName()
-    {
-        PlayerData.Instance().info.name = input.text;
-        Initialize();
-        PlayerData.Instance().SaveData();
+        private void Initialize()
+        {
+            var info = PlayerData.Instance().info;
+            placeholder.text = info.name;
+            input.text = null;
+        }
+
+        private void OnSetName()
+        {
+            PlayerData.Instance().info.name = input.text;
+            Initialize();
+            PlayerData.Instance().SaveData();
+        }
     }
 }

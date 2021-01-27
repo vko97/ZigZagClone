@@ -14,7 +14,7 @@ namespace ZigZag.Pooling
             public GameObject prefab;
             public string tag;
         }
-        public List<Pool> pools;
+        public List<Pool> Pools;
 
         private static Dictionary<string, List<GameObject>> poolDictionary;
         private static Transform trans;
@@ -23,9 +23,9 @@ namespace ZigZag.Pooling
         private void Awake()
         {
             trans = transform;
-            _pools = pools;
+            _pools = Pools;
             poolDictionary = new Dictionary<string, List<GameObject>>();
-            foreach (Pool pool in pools)
+            foreach (Pool pool in Pools)
             {
                 List<GameObject> poolObjects = new List<GameObject>();
                 for (int i = 0; i < pool.size; i++)

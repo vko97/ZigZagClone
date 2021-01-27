@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1774259098519033907}
   - component: {fileID: 6628874355997255170}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Finish_pivot
   m_TagString: Finish
   m_Icon: {fileID: 0}

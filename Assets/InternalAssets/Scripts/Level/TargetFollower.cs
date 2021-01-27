@@ -2,25 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TargetFollower : MonoBehaviour
+namespace ZigZag.Level
 {
-    private Transform target;
-    private Vector3 position;
-
-    private void Update()
+    public class TargetFollower : MonoBehaviour
     {
-        FollowTarget();
-    }
+        private Transform target;
+        private Vector3 position;
 
-    private void FollowTarget()
-    {
-        position = target.position;
-        position.y = -0.6f;
-        transform.position = position;
-    }
+        private void Update()
+        {
+            FollowTarget();
+        }
 
-    public void SetTarget(Transform target)
-    {
-        this.target = target;
+        private void FollowTarget()
+        {
+            position = target.position;
+            position.y = -0.6f;
+            transform.position = position;
+        }
+
+        public void SetTarget(Transform target)
+        {
+            this.target = target;
+        }
     }
 }

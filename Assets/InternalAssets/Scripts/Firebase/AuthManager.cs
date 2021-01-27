@@ -4,24 +4,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class AuthManager : MonoBehaviour
+namespace ZigZag.Firebase
 {
-    private void Awake()
+    public class AuthManager : MonoBehaviour
     {
-        Application.targetFrameRate = 60;
-        FirebaseController.Instance().onLogin += OnLogin;
-        PlayerData.Instance().onLoadedData += LoadMainMenu;
-    }
+        private void Awake()
+        {
+            Application.targetFrameRate = 60;
+            FirebaseController.Instance().onLogin += OnLogin;
+            PlayerData.Instance().onLoadedData += LoadMainMenu;
+        }
 
-    private void OnLogin()
-    {
-        PlayerData.Instance().LoadData();
-    }
+        private void OnLogin()
+        {
+            PlayerData.Instance().LoadData();
+        }
 
-    private void LoadMainMenu()
-    {
-        SceneManager.LoadScene("MainMenuScene");
-    }
+        private void LoadMainMenu()
+        {
+            SceneManager.LoadScene("MainMenuScene");
+        }
 
-    
+
+    }
 }
