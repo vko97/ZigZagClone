@@ -170,7 +170,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.Fgfactory.ZigZagClone
     Standalone: com.Fgfactory.ZigZagClone
-    iPhone: com.Fgfactory.ZigZagClone
+    iPhone: com.fgf.bingotest
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 23

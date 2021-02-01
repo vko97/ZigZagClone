@@ -67,6 +67,7 @@ Material:
     m_Floats:
     - Vector1_BF525535: 138
     - _AlphaClip: 0
+    - _AlphaPoint: -1.53
     - _Blend: 0
     - _BumpScale: 1
     - _Cull: 2
@@ -74,6 +75,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
+    - _FO: 1.09
     - _GlossMapScale: 1
     - _Glossiness: 1
     - _GlossyReflections: 1
@@ -82,6 +84,7 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _QueueOffset: 0
+    - _Range: 3.79
     - _ReceiveShadows: 1
     - _Smoothness: 1
     - _SmoothnessTextureChannel: 0
@@ -94,10 +97,15 @@ Material:
     m_Colors:
     - Color_58E0201D: {r: 1, g: 0.687739, b: 0, a: 1}
     - Color_6301F5FF: {r: 1, g: 1, b: 1, a: 1}
-    - _BaseColor: {r: 0, g: 1, b: 0.9578204, a: 0}
+    - _BaseColor: {r: 0.4407092, g: 0.031372547, b: 0.93333334, a: 0}
     - _Color: {r: 1, g: 0.47197425, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FogColor: {r: 0.3557761, g: 0.5905797, b: 0.6132076, a: 1}
+    - _FrontColor: {r: 0.8867924, g: 0.5635239, b: 0.2300641, a: 1}
+    - _LeftColor: {r: 0.9433962, g: 0.7776718, b: 0.5206479, a: 1}
+    - _MidleColorEnd: {r: 0.12210752, g: 0.45511416, b: 0.5283019, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
+    - _TopColor: {r: 0.764151, g: 0.50094855, b: 0.05406728, a: 1}
 --- !u!114 &5521705311455811797
 MonoBehaviour:
   m_ObjectHideFlags: 11

@@ -47,11 +47,11 @@ namespace ZigZag.UI
             playButton.onClick.AddListener(() => SceneManager.LoadScene(Constants.levelScene));
 #if UNITY_EDITOR
             removeAdsButton.onClick.AddListener(() => purchaser.BuyProductById(IAPManager.removeAds));
-#endif
 
-#if UNITY_ANDROID
+#else
             removeAdsButton.onClick.AddListener(() => PlayerData.Instance().RemoveAds());
 #endif
+
             //removeAdsButton.onClick.AddListener(() => purchaser.BuyProductById(IAPManager.removeAds));
             leadesButton.onClick.AddListener(() => leaderboard.gameObject.SetActive(true));
             optionsButton.onClick.AddListener(() => options.gameObject.SetActive(true));

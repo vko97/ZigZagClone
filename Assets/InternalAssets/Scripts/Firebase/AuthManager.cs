@@ -10,7 +10,7 @@ namespace ZigZag.Firebase
     {
         private void Awake()
         {
-            Application.targetFrameRate = 60;
+            //Application.targetFrameRate = 60;
             FirebaseController.Instance().onLogin += OnLogin;
             PlayerData.Instance().onLoadedData += LoadMainMenu;
         }

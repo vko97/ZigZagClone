@@ -1809,7 +1809,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1479482550}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
   m_Name: 
@@ -2588,6 +2588,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1129656557439167412, guid: 988c986c30d1763409d4df2986fd4416,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: c64c8cfacdf3ee7469cabaec649f71f5,
+        type: 2}
     - target: {fileID: 1227162280698479306, guid: 988c986c30d1763409d4df2986fd4416,
         type: 3}
       propertyPath: m_RenderPostProcessing
@@ -2612,6 +2618,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AngularDrag
       value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1311381815785032243, guid: 988c986c30d1763409d4df2986fd4416,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3813369850925755086, guid: 988c986c30d1763409d4df2986fd4416,
         type: 3}
